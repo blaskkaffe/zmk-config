@@ -10,52 +10,108 @@
 #include <dt-bindings/zmk/mouse.h>
 
 / {
+    combos { compatible = "zmk,combos"; };
+
     keymap {
         compatible = "zmk,keymap";
 
-        default_layer {
-            // -----------------------------------------------------------------------------------------
-            // |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BKSP |
-            // | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
-            // | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | ESC  |
-            //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
-
+        QWERTY {
             bindings = <
-&kp TAB    &kp Q  &kp W  &kp E     &kp R  &kp T        &kp Y    &kp U  &kp I      &kp O    &kp P     &kp BSPC
-&kp LCTRL  &kp A  &kp S  &kp D     &kp F  &kp G        &kp H    &kp J  &kp K      &kp L    &kp SEMI  &kp SQT
-&kp LSHFT  &kp Z  &kp X  &kp C     &kp V  &kp B        &kp N    &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp ESC
-                         &kp LGUI  &mo 1  &kp SPACE    &kp RET  &mo 2  &kp RALT
+&none  &kp Q             &kp W  &kp E                 &kp R        &kp T                   &kp Y                &kp U            &kp I      &kp O    &kp P                 &none
+&none  &kp A             &kp S  &kp D                 &kp F        &kp G                   &kp H                &kp J            &kp K      &kp L    &kp SEMI              &none
+&none  &mt LEFT_SHIFT Z  &kp X  &kp C                 &kp V        &kp B                   &kp N                &kp M            &kp COMMA  &kp DOT  &mt RIGHT_SHIFT FSLH  &none
+                                &mt ESC C_PLAY_PAUSE  &lt 7 SPACE  &mt LEFT_CONTROL TAB    &mt RIGHT_ALT ENTER  &lt 8 BACKSPACE  &kp DEL
             >;
         };
 
-        lower_layer {
-            // -----------------------------------------------------------------------------------------
-            // |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |
-            // | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
-            // | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
-            //                    | GUI |     | SPC |   | ENT |     | ALT |
-
+        COLEMAK_BASE {
             bindings = <
-&kp TAB     &kp N1        &kp N2        &kp N3        &kp N4        &kp N5          &kp N6    &kp N7    &kp N8    &kp N9     &kp N0  &kp BSPC
-&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT  &trans  &trans
-&kp LSHFT   &trans        &trans        &trans        &trans        &trans          &trans    &trans    &trans    &trans     &trans  &trans
-                                        &kp LGUI      &trans        &kp SPACE       &kp RET   &trans    &kp RALT
+&trans  &kp Q             &kp W  &kp F   &kp P   &kp G     &kp J        &kp L   &kp U      &kp Y    &kp SEMI              &trans
+&trans  &kp A             &kp R  &kp S   &kp T   &kp D     &kp H        &kp N   &kp E      &kp I    &kp O                 &trans
+&trans  &mt LEFT_SHIFT Z  &kp X  &kp C   &kp V   &kp B     &kp K        &kp M   &kp COMMA  &kp DOT  &mt RIGHT_SHIFT FSLH  &trans
+                                 &trans  &trans  &trans    &lt 2 ENTER  &trans  &trans
             >;
         };
 
-        raise_layer {
-            // -----------------------------------------------------------------------------------------
-            // |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BKSP |
-            // | CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
-            // | SHFT |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |  ~   |
-            //                    | GUI |     | SPC |   | ENT |     | ALT |
-
+        COLEMAK_ALTGR {
             bindings = <
-&kp TAB    &kp EXCL  &kp AT  &kp HASH   &kp DLLR  &kp PRCNT    &kp CARET  &kp AMPS   &kp KP_MULTIPLY  &kp LPAR  &kp RPAR  &kp BSPC
-&kp LCTRL  &trans    &trans  &mkp LCLK  &trans    &mkp RCLK    &kp MINUS  &kp EQUAL  &kp LBKT         &kp RBKT  &kp BSLH  &kp GRAVE
-&kp LSHFT  &trans    &trans  &trans     &trans    &trans       &kp UNDER  &kp PLUS   &kp LBRC         &kp RBRC  &kp PIPE  &kp TILDE
-                             &kp LGUI   &studio_unlock    &kp SPACE    &kp RET    &studio_unlock     &kp RALT
+&trans  &kp RA(Q)             &kp RA(W)  &kp RA(E)  &kp RA(R)  &kp RA(T)                       &kp RA(Y)  &kp RA(U)  &kp RA(I)      &kp RA(O)    &kp RA(P)                 &trans
+&trans  &kp RA(A)             &kp RA(S)  &kp RA(D)  &kp RA(F)  &kp RA(G)                       &kp RA(H)  &kp RA(J)  &kp RA(K)      &kp RA(L)    &kp RA(SEMI)              &trans
+&trans  &mt LEFT_SHIFT RA(Z)  &kp RA(X)  &kp RA(C)  &kp RA(V)  &kp RA(B)                       &kp RA(N)  &kp RA(M)  &kp RA(COMMA)  &kp RA(DOT)  &mt RIGHT_SHIFT RA(FSLH)  &trans
+                                         &trans     &trans     &mt RA(LEFT_CONTROL) RA(TAB)    &trans     &trans     &trans
             >;
+        };
+
+        GAMING_BASE {
+            bindings = <
+&trans  &kp TAB    &kp Q  &kp W  &kp E        &kp R        &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &kp LSHFT  &kp A  &kp S  &kp D        &kp F        &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &kp LCTRL  &kp Z  &kp X  &kp C        &kp V        &trans  &trans  &trans  &trans  &trans  &trans
+                          &mo 4  &lt 7 SPACE  &kp SPACE    &trans  &trans  &trans
+            >;
+        };
+
+        GAMING_EXTRA {
+            bindings = <
+&trans  &kp ESC       &trans        &trans        &trans        &kp ENTER    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans        &trans        &trans        &trans        &trans       &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_4  &kp N5       &trans  &trans  &trans  &trans  &trans  &trans
+                                    &trans        &trans        &mo 1        &trans  &trans  &trans
+            >;
+        };
+
+        EXTRA_BASE {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+                        &trans  &trans  &trans    &trans  &trans  &trans
+            >;
+        };
+
+        EXTRA_EXTRA {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+                        &trans  &trans  &trans    &trans  &trans  &trans
+            >;
+        };
+
+        NUMBER_LAYER {
+            bindings = <
+&trans  &kp LEFT_BRACKET        &kp N7  &kp N8  &kp N9  &kp RIGHT_BRACKET    &kp C_VOL_UP         &kp C_PREV     &trans        &kp C_NEXT         &trans                &trans
+&trans  &kp NUMBER_4            &kp N4  &kp N5  &kp N6  &kp N0               &trans               &kp EQUAL      &kp MINUS     &kp SQT            &kp SQT               &trans
+&trans  &mt LEFT_SHIFT KP_PLUS  &kp N1  &kp N2  &kp N3  &mt ENTER KP_DOT     &kp C_VOL_DN         &kp LEFT_ALT   &kp LEFT_GUI  &kp RIGHT_CONTROL  &mt RSHIFT BACKSLASH  &trans
+                                        &mo 8   &trans  &trans               &mt RIGHT_ALT ENTER  &kp BACKSPACE  &trans
+            >;
+        };
+
+        FUNCTION_LAYER {
+            bindings = <
+&trans  &kp ESC    &kp PG_UP  &kp UP    &kp PG_DN        &kp INS     &kp PRINTSCREEN  &kp F1  &kp F2   &kp F3   &kp F4   &trans
+&trans  &kp HOME   &kp LEFT   &kp DOWN  &kp RIGHT        &kp END     &kp SCROLLLOCK   &kp F5  &kp F6   &kp F7   &kp F8   &trans
+&trans  &kp LCTRL  &kp LALT   &kp DEL   &kp PAUSE_BREAK  &kp LGUI    &kp RGUI         &kp F9  &kp F10  &kp F11  &kp F12  &trans
+                              &trans    &trans           &trans      &trans           &trans  &trans
+            >;
+        };
+
+        SETTINGS_LAYER {
+            bindings = <
+&trans  &bootloader  &trans  &trans  &trans  &trans    &bt BT_CLR    &trans        &trans        &trans        &bootloader   &trans
+&trans  &trans       &trans  &trans  &trans  &trans    &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &trans
+&trans  &to 3        &trans  &trans  &trans  &trans    &trans        &trans        &trans        &trans        &to 5         &trans
+                             &trans  &trans  &to 1     &to 0         &trans        &trans
+            >;
+        };
+    };
+
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+
+        COMBO_LAYER {
+            if-layers = <7 8>;
+            then-layer = <9>;
         };
     };
 };
