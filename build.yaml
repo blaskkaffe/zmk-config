@@ -59,7 +59,7 @@ include:
     # required: https://github.com/M165437/nice-view-gem
     # shield: corne_left nice_view_adapter nice_view
     # shield: corne_left nice_view_adapter nice_view_gem
-    cmake-args: -DCONFIG_ZMK_KEYBOARD_NAME=\"Dactyl_Cygnus"
+    cmake-args: -DCONFIG_ZMK_KEYBOARD_NAME=\"Dactyl_Cygnus\"
     artifact-name: nice_corne_left
     snippet: studio-rpc-usb-uart
     shield: corne_left # for OLED no nice_view
